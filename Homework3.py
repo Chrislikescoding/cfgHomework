@@ -13,7 +13,7 @@ is_raining = input("Is it raining?").lower() == 'y'
 if is_raining:
     print("Take your umbrella")
 else:
-    print("You don't need an umbrella")
+    print("You definitely don't need an umbrella")
 
 # Homework 3
 # Task 1
@@ -86,7 +86,7 @@ print(f'{word}century,{decade} ')
 shopping_list = [
 'oranges',
 'cat food',
-'sponge cake',
+'spongey cake',
 'long-grain rice',
 'cheese board',
 ]
@@ -175,7 +175,7 @@ print(f'{sorry}You have won {prize} pounds')
 #homework 3
 #task 3
 # question 1
-# on word document
+# is on word document
 
 #homework 3
 #task 3

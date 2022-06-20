@@ -46,7 +46,7 @@ for num in range(7):
 else:
     if counter in [0, 1, 2]:
        print(counter)
-       sorry = 'Sorry '
+       sorry = 'Sorry! '
        first_word = ''
 
 print(f'{first_word} You have {counter} numbers', sep='')

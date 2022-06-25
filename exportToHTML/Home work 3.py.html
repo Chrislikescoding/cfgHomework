@@ -1,0 +1,298 @@
+<html>
+<head>
+<title>Home work 3.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080; font-style: italic;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #000080; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Home work 3.py</font>
+</center></td></tr></table>
+<pre><span class="s0"># Homework 3</span>
+<span class="s0"># Task 1</span>
+<span class="s0"># Question 1</span>
+<span class="s0"># Create a program that tells you whether or not you need an umbrella when you</span>
+<span class="s0"># leave the house.</span>
+<span class="s0"># The program should:</span>
+<span class="s0"># 1. Ask you if it is raining using input()</span>
+<span class="s0"># 2. If the input is 'y' it should output ''Take an umbrella';</span>
+<span class="s0"># 3. If the input is 'n', it should output 'You don't need an umbrella'</span>
+
+is_raining = input(<span class="s2">&quot;Is it raining?&quot;</span>).lower() == <span class="s2">'y'</span>
+
+<span class="s3">if </span>is_raining:
+    print(<span class="s2">&quot;Take your umbrella&quot;</span>)
+<span class="s3">else</span>:
+    print(<span class="s2">&quot;You don't need an umbrella&quot;</span>)
+
+<span class="s0"># Homework 3</span>
+<span class="s0"># Task 1</span>
+<span class="s0"># Question 2</span>
+
+<span class="s0"># I'm on holiday and want to hire a boat. The boat hire costs £20 + a refundable £5</span>
+<span class="s0"># deposit. I've written a program to check that I can afford the cost, but something</span>
+<span class="s0"># doesn't seem right. Have a look at my program and work out what I've done</span>
+<span class="s0"># wrong</span>
+<span class="s0"># used floats to compare and changed &lt; to &gt;</span>
+
+<span class="s0">#Answer</span>
+<span class="s0"># I just used float to compare the numeric value and changed &lt; to &gt; because it was the wrong way round.</span>
+
+my_money = float(input(<span class="s2">'How much money do you have? '</span>))
+boat_cost = <span class="s4">20 </span>+ <span class="s4">5</span>
+<span class="s3">if </span>my_money &gt; float(boat_cost):
+    print(<span class="s2">'You can afford the boat hire'</span>)
+<span class="s3">else</span>:
+    print(<span class="s2">'You cannot afford the board hire'</span>)
+
+<span class="s0"># Homework 3</span>
+<span class="s0"># Task 1</span>
+<span class="s0"># Question 3</span>
+<span class="s0"># Your friend works for an antique book shop that sells books between 1800 and</span>
+<span class="s0"># 1950 and wants to quickly categorise books by the century and decade that they</span>
+<span class="s0"># were written. Write a program that takes a year (e.g. 1872) and outputs the</span>
+<span class="s0"># century and decade (e.g. 'Eighteenth Century, Seventies')</span>
+
+
+year = input(<span class="s2">&quot;what year was this book first printed?&quot;</span>)
+century = year[:<span class="s4">2</span>]
+dec_number = year[<span class="s4">2</span>:<span class="s4">3</span>]
+
+decade = <span class="s2">' '</span>
+<span class="s3">if </span>century == <span class="s2">'19'</span>:
+  word = <span class="s2">'Twentieth '</span>
+<span class="s3">elif </span>century == <span class="s2">'18'</span>:
+  word = <span class="s2">'Nineteenth '</span>
+
+<span class="s3">if </span>dec_number == <span class="s2">'0'</span>:
+  decade = <span class="s2">'Noughties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'1'</span>:
+  decade  = <span class="s2">'Tens'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'2'</span>:
+  decade =<span class="s2">'Twenties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'3'</span>:
+  decade =<span class="s2">'Thirties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'4'</span>:
+   decade =<span class="s2">'Forties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'5'</span>:
+    decade = <span class="s2">'Fifties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'6'</span>:
+     decade =<span class="s2">'Sixties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'7'</span>:
+  decade =<span class="s2">'Seventies'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'8'</span>:
+ decade = <span class="s2">'Eighties'</span>
+<span class="s3">elif </span>dec_number == <span class="s2">'9'</span>:
+  decade =<span class="s2">'Nineties'</span>
+
+print(<span class="s2">f'</span><span class="s3">{</span>word<span class="s3">}</span><span class="s2">century,</span><span class="s3">{</span>decade<span class="s3">} </span><span class="s2">'</span>)
+
+
+
+<span class="s0">#Homework 3</span>
+<span class="s0"># Task 2</span>
+<span class="s0"># Question 1 first element should be element 0 not 1</span>
+
+shopping_list = [
+<span class="s2">'oranges'</span>,
+<span class="s2">'cat food'</span>,
+<span class="s2">'sponge cake'</span>,
+<span class="s2">'long-grain rice'</span>,
+<span class="s2">'cheese board'</span>,
+]
+print(shopping_list[<span class="s4">0</span>])
+
+
+<span class="s0">#Homework 3</span>
+<span class="s0"># Task2</span>
+<span class="s0">#Question 2</span>
+
+chocolate = input(<span class="s2">'Chocolate type: '</span>)
+
+chocolates = {
+        <span class="s2">'white'</span>: <span class="s2">'1.50'</span>,
+        <span class="s2">'milk'</span>: <span class="s2">'1.20'</span>,
+        <span class="s2">'dark'</span>: <span class="s2">'1.80'</span>,
+        <span class="s2">'vegan'</span>: <span class="s2">'2.00'</span>,
+    }
+
+<span class="s3">if </span>chocolate == <span class="s2">'white'</span>:
+    print(chocolates[<span class="s2">'white'</span>])
+
+<span class="s3">elif </span>chocolate == <span class="s2">'milk'</span>:
+    print(chocolates[<span class="s2">'milk'</span>])
+
+<span class="s3">elif </span>chocolate == <span class="s2">'dark'</span>:
+    print(chocolates[<span class="s2">'dark'</span>])
+
+<span class="s3">elif </span>chocolate == <span class="s2">'vegan'</span>:
+    print(chocolates[<span class="s2">'vegan'</span>])
+
+<span class="s0">#homework 3</span>
+<span class="s0">#task 2</span>
+<span class="s0"># question 3</span>
+
+<span class="s3">import </span>random
+
+counter = <span class="s4">0</span>
+prize = <span class="s4">0</span>
+sorry = <span class="s2">''</span>
+my_winning_numbers = []
+
+lottery_numbers = random.sample(range(<span class="s4">1</span>, <span class="s4">99</span>), <span class="s4">7</span>)
+
+print(<span class="s2">'</span><span class="s3">\033</span><span class="s2">[91m' </span>+ <span class="s2">'</span><span class="s3">\033</span><span class="s2">[1m' </span>+ <span class="s2">&quot;Tonight's winning numbers are: ......&quot; </span>+ str(lottery_numbers) + <span class="s2">'</span><span class="s3">\033</span><span class="s2">[0m'</span>)
+
+is_lucky_dip = input(<span class="s2">&quot;Would you like a lucky dip y/n?&quot;</span>).lower() == <span class="s2">'y'</span>
+
+<span class="s3">if </span>is_lucky_dip:
+    my_winning_numbers = random.sample(range(<span class="s4">1</span>, <span class="s4">99</span>), <span class="s4">7</span>)
+<span class="s3">else</span>:
+    print(<span class="s2">'Check the lottery numbers on your ticket, you will be prompted for each number'</span>)
+    <span class="s3">for </span>number <span class="s3">in </span>range(<span class="s4">0</span>, <span class="s4">7</span>):
+        my_number = int((input(<span class="s2">'Please enter number ' </span>+ str(number + <span class="s4">1</span>) + <span class="s2">' '</span>)))
+        my_winning_numbers.append(my_number)
+
+print(<span class="s2">&quot;Your numbers are :&quot; </span>+ str(my_winning_numbers))
+
+<span class="s3">for </span>num <span class="s3">in </span>range(<span class="s4">7</span>):
+    <span class="s3">if </span>my_winning_numbers[num] <span class="s3">in </span>lottery_numbers:
+        counter += <span class="s4">1</span>
+    <span class="s3">if </span>counter == <span class="s4">3</span>:
+        prize = <span class="s4">20</span>
+        first_word = <span class="s2">'Well done'</span>
+    <span class="s3">elif </span>counter == <span class="s4">4</span>:
+        prize = <span class="s4">40</span>
+        first_word = <span class="s2">'Well done'</span>
+    <span class="s3">elif </span>counter == <span class="s4">5</span>:
+        prize = <span class="s4">1000</span>
+        first_word = <span class="s2">'Congratulations!!!'</span>
+    <span class="s3">elif </span>counter == <span class="s4">6</span>:
+        prize = <span class="s4">10000</span>
+        first_word = <span class="s2">'Congratulations!!!'</span>
+    <span class="s3">elif </span>counter == <span class="s4">7</span>:
+        prize = <span class="s4">1000000</span>
+        first_word = <span class="s2">'</span><span class="s3">\033</span><span class="s2">[1m''</span><span class="s3">\033</span><span class="s2">[91m''Congratulations!! You no longer need to learn Python. Buy your instructor a BIG present on the way out!!!'</span>
+<span class="s3">else</span>:
+    <span class="s3">if </span>counter <span class="s3">in </span>[<span class="s4">0</span>, <span class="s4">1</span>, <span class="s4">2</span>]:
+        print(counter)
+        sorry = <span class="s2">'Sorry '</span>
+        first_word = <span class="s2">''</span>
+
+print(<span class="s2">f'</span><span class="s3">{</span>first_word<span class="s3">} </span><span class="s2">You have </span><span class="s3">{</span>counter<span class="s3">} </span><span class="s2">numbers'</span>, sep=<span class="s2">''</span>)
+print(<span class="s2">f'</span><span class="s3">{</span>sorry<span class="s3">}</span><span class="s2">You have won </span><span class="s3">{</span>prize<span class="s3">} </span><span class="s2">pounds'</span>)
+
+<span class="s0">#homework 3</span>
+<span class="s0">#task 3</span>
+<span class="s0"># question 1</span>
+<span class="s0"># on word document</span>
+
+<span class="s0">#homework 3</span>
+<span class="s0">#task 3</span>
+<span class="s0"># question 2</span>
+<span class="s0">#answer change 'r' to 'w' or r+</span>
+poem = <span class="s2">'I like Python and I am not very good at poems'</span>
+<span class="s3">with </span>open(<span class="s2">'poem.txt'</span>, <span class="s2">'w'</span>) <span class="s3">as </span>poem_file:
+    poem_file.write(poem)
+
+<span class="s0">#homework 3</span>
+<span class="s0">#task 3</span>
+<span class="s0"># question 3</span>
+
+<span class="s3">import </span>os
+<span class="s3">from </span>os.path <span class="s3">import </span>exists, join
+
+mylines = []
+
+song_lines = [<span class="s2">'You could never know what its like'</span>,
+              <span class="s2">'Your blood like winter freezes just like ice'</span>,
+              <span class="s2">'And there</span><span class="s3">\'</span><span class="s2">s a cold lonely light that shines from you'</span>,
+              <span class="s2">'You</span><span class="s3">\'</span><span class="s2">ll wind up like the wreck you hide behind that mask you use'</span>,
+              <span class="s2">'And did you think this fool could never win?'</span>,
+              <span class="s2">'Well look at me, I</span><span class="s3">\'</span><span class="s2">m coming back again'</span>,
+              <span class="s2">'I got a taste of love in a simple way'</span>,
+              <span class="s2">'And if you need to know while I</span><span class="s3">\'</span><span class="s2">m still standing, you just fade away'</span>,
+              <span class="s2">'Dont you know I</span><span class="s3">\'</span><span class="s2">m still standing better than I ever did'</span>,
+              <span class="s2">'Looking like a true survivor, feeling like a little kid'</span>,
+              <span class="s2">'I</span><span class="s3">\'</span><span class="s2">m still standing after all this time'</span>,
+              <span class="s2">'Picking up the pieces of my life without you on my mind'</span>,
+              <span class="s2">'I</span><span class="s3">\'</span><span class="s2">m still standing (Yeah, yeah, yeah)'</span>,
+              <span class="s2">'I</span><span class="s3">\'</span><span class="s2">m still standing (Yeah, yeah, yeah)'</span>]
+
+file_name = <span class="s2">'song.txt'</span>
+
+<span class="s3">with </span>open(file_name, <span class="s2">'w+'</span>) <span class="s3">as </span>text_file:
+    text_file.write(<span class="s2">'</span><span class="s3">\n</span><span class="s2">'</span>.join(song_lines))
+
+text_file.close()
+
+<span class="s0"># get the file path and name using the os module and then check if it exists</span>
+path = os.getcwd()
+path: str = join(path, <span class="s2">'song.txt'</span>)
+
+<span class="s3">if </span>exists(path):
+    print((file_name) + <span class="s2">' was created in ' </span>+ path)
+<span class="s3">else</span>:
+    print(str(path) + <span class="s2">' was NOT created'</span>)
+
+<span class="s3">with </span>open(<span class="s2">'song.txt'</span>, <span class="s2">'r+'</span>) <span class="s3">as </span>outfile:
+    <span class="s3">for </span>line <span class="s3">in </span>outfile:
+        <span class="s3">if </span><span class="s2">'still' </span><span class="s3">in </span>line:
+            index = line[:-<span class="s4">1</span>]
+            mylines.append(index)
+
+print(mylines)
+
+<span class="s0">#homework 3</span>
+<span class="s0"># Task 4</span>
+<span class="s0">#Question 1</span>
+<span class="s3">import </span>requests
+<span class="s3">import </span>random
+
+poke_numbers = []
+
+<span class="s0">#generate 6 random pokemon numbers</span>
+
+poke_numbers = [random.randint(<span class="s4">1</span>, <span class="s4">99</span>) <span class="s3">for </span>num <span class="s3">in </span>range(<span class="s4">6</span>)]
+<span class="s0">#file name</span>
+file_name = <span class="s2">'pokemon.txt'</span>
+<span class="s3">with </span>open(file_name, <span class="s2">'w'</span>) <span class="s3">as </span>text_file:
+    <span class="s3">for </span>pnumber <span class="s3">in </span>poke_numbers:
+       url = <span class="s2">'https://pokeapi.co/api/v2/pokemon/{}/'</span>.format(pnumber)
+       response = requests.get(url)
+       pokemon = response.json()
+
+       text_file.write(pokemon[<span class="s2">'name'</span>] + <span class="s2">' (pokemon number ' </span>+ str(pnumber) + <span class="s2">')'' has these moves :'</span>)
+       moves = pokemon[<span class="s2">'moves'</span>]
+       <span class="s3">for </span>move <span class="s3">in </span>moves:
+          text_file.write(<span class="s2">'</span><span class="s3">\n</span><span class="s2">' </span>+ move[<span class="s2">'move'</span>][<span class="s2">'name'</span>])
+
+
+
+<span class="s0">#homework 3</span>
+<span class="s0"># Task 4</span>
+<span class="s0">#Question 2</span>
+
+<span class="s3">import </span>requests
+<span class="s3">from </span>pprint <span class="s3">import </span>pprint
+
+url = <span class="s2">'https://opentdb.com/api.php'</span>
+
+parameters = {
+    <span class="s2">&quot;amount&quot;</span>: <span class="s4">10</span>,
+    <span class="s2">&quot;type&quot;</span>: <span class="s2">&quot;multiple&quot;</span>
+}
+response = requests.get(url=<span class="s2">&quot;https://opentdb.com/api.php&quot;</span>, params=parameters)
+question_data = response.json()[<span class="s2">&quot;results&quot;</span>]
+
+pprint(question_data)</pre>
+</body>
+</html>

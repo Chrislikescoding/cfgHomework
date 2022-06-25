@@ -86,7 +86,7 @@ print(f'{word}century,{decade} ')
 shopping_list = [
 'oranges',
 'cat food',
-'spongey cake',
+'Victoria sponge cake',
 'long-grain rice',
 'cheese board',
 ]

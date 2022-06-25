@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>ATM_simulation_for_testing.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080; font-style: italic;}
+.s1 { color: #000000;}
+.s2 { color: #000080; font-weight: bold;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ATM_simulation_for_testing.py</font>
+</center></td></tr></table>
+<pre><span class="s0"># for testing purposes this get_pin has only one go at get_pin</span>
+<span class="s2">class </span>BlankInputError(Exception):
+    <span class="s2">pass</span>
+
+<span class="s2">def </span>get_pin():
+ <span class="s2">try</span>:
+    pin_no = int(input(<span class="s3">&quot;enter your pin code please &quot;</span>))
+    <span class="s2">if not </span>pin_no:
+        <span class="s2">raise </span>BlankInputError
+ <span class="s2">except </span>BlankInputError <span class="s2">as </span>b:
+     print(b)
+ <span class="s2">else</span>:
+     <span class="s2">return </span>pin_no
+
+
+<span class="s2">def </span>check_pin(pin_no):
+    file_object = <span class="s3">'clients.txt'</span>
+    <span class="s2">with </span>open(file_object, <span class="s3">'r+'</span>) <span class="s2">as </span>outfile:
+        <span class="s2">for </span>line <span class="s2">in </span>outfile:
+            <span class="s2">if </span>pin_no == line[-<span class="s4">5</span>:-<span class="s4">1</span>]:
+                <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+<span class="s2">def </span>check_less_than_balance_values(withdrawal_amount):
+    balance = <span class="s4">100</span>
+    <span class="s2">if </span>withdrawal_amount &lt; balance:
+        <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+<span class="s2">def </span>check_multiple_of_ten(withdrawal_amount):
+    <span class="s2">if </span>withdrawal_amount % <span class="s4">10 </span>==<span class="s4">0</span>:
+        <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+<span class="s2">def </span>get_bal(withdrawal_amount):
+    is_zero=<span class="s2">False</span>
+    balance = <span class="s4">100</span>
+    print(balance)
+    is_zero = balance - withdrawal_amount == <span class="s4">0</span>
+    <span class="s2">return </span>is_zero
+
+
+
+</pre>
+</body>
+</html>

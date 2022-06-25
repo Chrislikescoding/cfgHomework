@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>ATM_code.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080; font-style: italic;}
+.s1 { color: #000000;}
+.s2 { color: #000080; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ATM_code.py</font>
+</center></td></tr></table>
+<pre><span class="s0">#1.Pin code an int range 1 to 9999</span>
+<span class="s0">#2 Pin code exists on file</span>
+<span class="s0">#3 account balanance = 100.</span>
+<span class="s0">#4 withdrawal amount le to balance</span>
+<span class="s0">#5 balance - withdrawl &gt; 0</span>
+
+<span class="s0">#1</span>
+<span class="s2">def </span>is_valid_pin(num,_min, _max):
+    <span class="s2">if </span>_min &lt;= num &lt;= _max:
+        <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+<span class="s0">#3</span>
+<span class="s2">def </span>is_val_bal(num):
+    <span class="s2">return </span>num  == <span class="s3">100</span>
+
+<span class="s0">#4</span>
+<span class="s2">def </span>is_valid_amount(amt,bal):
+    <span class="s2">if </span>amt &lt; bal :
+        <span class="s2">return True</span>
+    <span class="s2">return False</span>
+<span class="s0">#5</span>
+<span class="s2">def </span>bal_not_neg(bal,amt):
+    <span class="s2">if </span>bal- amt !=<span class="s3">0</span>:
+        <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+
+<span class="s0">#2</span>
+<span class="s2">def </span>get_file_content(file_name):
+    <span class="s0">&quot;&quot;&quot; 
+    Read content of a file 
+    :param file_name: str file name or path 
+    :return: list of str where each str is a line 
+ 
+    Example return: 
+        [ 
+            '1. line', 
+            '2. line', 
+            '3. line', 
+        ] 
+    &quot;&quot;&quot;</span>
+    <span class="s2">with </span>open(file_name, <span class="s4">'r'</span>) <span class="s2">as </span>file:
+        <span class="s2">return </span>file.readlines()
+
+
+<span class="s2">def </span>valid_pin_number(file_name,pin):
+    content = get_file_content(file_name)
+    <span class="s2">for </span>element <span class="s2">in </span>content:
+        <span class="s2">if </span>pin <span class="s2">in </span>element:
+            <span class="s2">return True</span>
+    <span class="s2">return False</span>
+
+
+
+</pre>
+</body>
+</html>

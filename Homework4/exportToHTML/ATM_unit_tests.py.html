@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>ATM_unit_tests.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ATM_unit_tests.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span>unittest <span class="s0">import </span>TestCase, main <span class="s2"># for all examples</span>
+
+<span class="s0">from </span>ATM_code <span class="s0">import </span>get_file_content
+<span class="s0">from </span>ATM_simulation_for_testing <span class="s0">import </span>get_pin, check_less_than_balance_values, check_multiple_of_ten, \
+    BlankInputError, get_bal
+
+
+<span class="s0">class </span>TestCheckPinFunction(TestCase):
+<span class="s2">#1 pin should be an int</span>
+    <span class="s0">def </span>test_is_valid_pin(self):
+        expected = int
+        returned = type(get_pin())
+        self.assertEqual(expected, returned)
+
+<span class="s2">#2 withdrawal amount should be less than balance</span>
+    <span class="s0">def </span>test_withdrawal_lt_balance(self):
+         expected = <span class="s0">True</span>
+         result = check_less_than_balance_values(<span class="s3">80</span>)
+         self.assertEqual(expected, result)
+
+<span class="s2">#3 withdrawal amount should be a multiple of ten</span>
+    <span class="s0">def </span>test_amount_between_parms(self):
+        expected = <span class="s0">False</span>
+        result = check_multiple_of_ten(<span class="s3">25</span>)
+        self.assertEqual(expected, result)
+
+<span class="s2">#4  def test_bal_is_not_0(self):</span>
+        expected = <span class="s0">True</span>
+        returned = get_bal(<span class="s3">10</span>)
+        self.assertEqual(expected, returned)
+
+ <span class="s2">#5   def test_pin_is_blank(self):</span>
+        self.assertRaises((BlankInputError,ValueError,TypeError),get_pin())
+
+
+
+
+<span class="s0">if </span>__name__ == <span class="s4">'__main__'</span>:
+    main()
+</pre>
+</body>
+</html>

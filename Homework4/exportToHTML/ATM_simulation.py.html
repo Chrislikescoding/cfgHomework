@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>ATM_simulation.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ATM_simulation.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span>os
+
+<span class="s2"># Question 1</span>
+<span class="s2"># Simple ATM program</span>
+<span class="s2"># Using exception handling code blocks such as try/ except / else / finally, write a</span>
+<span class="s2"># program that simulates an ATM machine to withdraw money.</span>
+<span class="s2"># (NB: the more code blocks the better, but try to use at least two key words e.g.</span>
+<span class="s2"># try/except)</span>
+<span class="s2"># I am a bank machine</span>
+<span class="s2">#</span>
+<span class="s2"># TASK 2 (Exception Handling)</span>
+
+<span class="s0">class </span>ExcessiveWithdrawalAmount(Exception):
+    <span class="s0">pass</span>
+<span class="s0">class </span>BlankInputError(Exception):
+    <span class="s0">pass</span>
+<span class="s0">class </span>NotMultipleOfTen(Exception):
+    <span class="s0">pass</span>
+
+
+
+<span class="s0">def </span>check_pin(pin_no):
+    file_object = <span class="s3">'clients.txt'</span>
+    <span class="s0">try</span>:
+        <span class="s0">with </span>open(file_object, <span class="s3">'r+'</span>) <span class="s0">as </span>outfile:
+            <span class="s0">for </span>line <span class="s0">in </span>outfile:
+                <span class="s0">if </span>pin_no == line[-<span class="s4">5</span>:-<span class="s4">1</span>]:
+                    <span class="s0">return True</span>
+    <span class="s0">except </span>FileNotFoundError <span class="s0">as </span>f:
+        print(<span class="s3">'The required client file is not found '</span>)
+    <span class="s0">else</span>:
+        print(<span class="s3">'program is checking the client data base'</span>)
+    <span class="s0">finally</span>:
+        outfile.close()
+
+
+<span class="s0">def </span>get_pin():
+
+    <span class="s0">try</span>:
+        pin_no = input(<span class="s3">&quot;enter your pin code please &quot;</span>)
+
+        <span class="s0">if not </span>pin_no:
+            <span class="s0">raise </span>BlankInputError
+        <span class="s0">else</span>:
+            attempts_counter = <span class="s4">0</span>
+            print(check_pin(pin_no))
+            <span class="s0">while </span>attempts_counter &lt; <span class="s4">2</span>:
+                attempts_counter += <span class="s4">1</span>
+                print(attempts_counter)
+                <span class="s0">if </span>check_pin(pin_no) != <span class="s0">True</span>:
+                    pin_no = input(<span class="s3">&quot;please re-enter your pin &quot;</span>)
+                <span class="s0">else</span>:
+                    <span class="s0">return True</span>
+
+    <span class="s0">except </span>BlankInputError <span class="s0">as </span>b:
+        print(<span class="s3">&quot;Pin number cannot be blank,please enter a PIN&quot;</span>
+              <span class="s3">&quot;&quot;</span>)
+    <span class="s0">except </span>EOFError <span class="s0">as </span>e:
+        print(<span class="s3">&quot;There is an issue with your input, did you enter any?&quot;</span>
+              <span class="s3">&quot;&quot;</span>)
+    <span class="s0">else</span>:
+        print(<span class="s3">&quot;Checking entered pin number&quot;</span>)
+
+<span class="s0">def </span>calculate_balance(withdrawal_amount):
+    <span class="s0">assert </span>(type(withdrawal_amount) == int)
+    <span class="s0">assert </span>(withdrawal_amount &gt; <span class="s4">0</span>)  <span class="s2"># evaluates to True or False and Panic</span>
+
+    balance = <span class="s4">100</span>
+
+    <span class="s0">try</span>:
+        <span class="s0">if   </span>withdrawal_amount &gt; balance:
+            <span class="s0">raise </span>ExcessiveWithdrawalAmount
+        <span class="s0">elif </span>(withdrawal_amount % <span class="s4">10 </span>!= <span class="s4">0</span>):
+            <span class="s0">raise </span>NotMultipleOfTen
+        <span class="s0">elif </span>(balance-withdrawal_amount) &lt;= <span class="s4">0</span>:
+            <span class="s0">raise </span>ValueError
+    <span class="s0">except </span>AssertionError <span class="s0">as </span>a:
+        print (<span class="s3">&quot;Withdrawal amount is not in the correct format&quot;</span>)
+    <span class="s0">except </span>ExcessiveWithdrawalAmount <span class="s0">as </span>ewd:
+        print (<span class="s3">&quot;Don't be silly! you can't withdraw more than your balance&quot;</span>)
+    <span class="s0">except </span>NotMultipleOfTen <span class="s0">as </span>nmt:
+        print (<span class="s3">&quot;The amount to withdraw should be a multiple of ten&quot;</span>)
+    <span class="s0">except </span>ValueError <span class="s0">as </span>t:
+        print(<span class="s3">f&quot;balance cannot be zero: </span><span class="s0">{</span>t<span class="s0">}</span><span class="s3">&quot;</span>)
+    <span class="s0">except </span>TypeError <span class="s0">as </span>t:
+            <span class="s0">return </span>(<span class="s3">&quot;This is a type error&quot;</span>)
+
+    <span class="s0">else</span>:
+        balance -= int(withdrawal_amount)
+        print(<span class="s3">f'</span><span class="s0">{</span>withdrawal_amount<span class="s0">} </span><span class="s3">was withdrawn from your account </span><span class="s0">{</span>balance<span class="s0">} </span><span class="s3">remaining'</span>)
+    <span class="s0">finally</span>:
+        print(<span class="s3">f'Your balance now stands at </span><span class="s0">{</span>balance<span class="s0">}</span><span class="s3">'</span>)
+    <span class="s0">return </span>balance
+
+<span class="s0">if </span>get_pin() == <span class="s0">True</span>:
+    <span class="s0">try</span>:
+        withdrawal_amount = int(input(<span class="s3">'enter how much you would like to withdraw in multiples of £10? '</span>))
+    <span class="s0">except </span>ValueError <span class="s0">as </span>v:
+        print(<span class="s3">&quot;you must enter a numeric value&quot;</span>)
+    <span class="s0">else</span>:
+        calculate_balance(withdrawal_amount)
+
+
+
+
+</pre>
+</body>
+</html>
